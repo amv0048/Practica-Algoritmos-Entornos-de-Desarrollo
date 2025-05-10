@@ -7,18 +7,15 @@ public abstract class algoritmos {
 	 * @param num parametro a introducir
 	 * @return entero con el factorial
 	 */
-	public String factorial(int num) {
+	public int factorial(int num) {
 		if (num < 0)
 			throw new IllegalArgumentException();
 		else {
-			String res ="";
 			int result = 1;
-			
 			for (int i = 1; i <= num; i++) {
-				res += result + ", ";
 				result *= i;
 			}
-			return res+ ": "+result;
+			return result;
 		}
 	}
 	
@@ -29,15 +26,16 @@ public abstract class algoritmos {
 	 */
 	public boolean primo(int num){
 	    boolean primo = false;
+	    
 	    if (num < 2)
 	        throw new IllegalArgumentException();
 	    else {
-	        int cont = 2;
-	        do {
-	            primo = num % cont == 0 ? false : true;
-	            cont++;
-	        } while (!primo && cont <= 7);
-	        return primo;
+	    		if (num % 2 == 0) return false;
+	    		for (int i = 3; i * i <= num; i++) {
+					if (num % i == 0)
+						return false;
+				}
+	    		return true;
 	    }
 	}
 	
